@@ -1,14 +1,16 @@
-package controller;
+package com.controller;
 
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.model.Course;
+import com.repository.CourseRepository;
+
 import lombok.AllArgsConstructor;
-import model.Courses;
-import repository.CourseRepository;
 
 @RestController
 @RequestMapping("/api/courses")
@@ -18,7 +20,7 @@ public class CourseController {
 	private final CourseRepository courseRepository;
 		
 	@GetMapping
-	public List<Course> list() {
+	public @ResponseBody List<Course> list() {
 		return courseRepository.findAll();
 	}
 }
